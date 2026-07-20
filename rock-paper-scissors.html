@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            number = Math.random()
+            if (number <= (1/3)) {
+                console.log("Computer's choice: rock");
+                return "Computer's choice: rock";
+            } else if (number <= (2/3)) {
+                console.log("Computer's choice: paper");
+                return "Computer's choice: paper";
+            } else {
+                console.log("Computer's choice: scissors");
+                return "Computer's choice: scissors";
+            }
+        }
+
+        function getHumanChoice() {
+            input = prompt("Choose your move: rock, paper, or scissors")
+            input = input.toLowerCase();
+            if (input === "rock") {
+                console.log("Your choice: rock");
+                return "Your choice: rock";
+            } else if (input === "paper") {
+                console.log("Your choice: paper");
+                return "Your choice: paper";
+            } else if (input === "scissors") {
+                console.log("Your choice: scissors");
+                return "Your choice: scissors";
+            }
+        }
+
+        function playGame() {
+            console.log("game started");
+            humanScore = 0;
+            computerScore = 0;
+            for (let i = 0; i < 5; i++) {
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+                function playRound(humanChoice, computerChoice) {                    
+                    if (humanSelection === "Your choice: rock") {
+                        if (computerSelection === "Computer's choice: rock") {
+                            console.log("It's a tie! Both chose rock.");
+                        } else if (computerSelection === "Computer's choice: paper") {
+                            computerScore++;
+                            console.log("You lose! Paper beats rock.");
+                        } else if (computerSelection === "Computer's choice: scissors") {
+                            humanScore++;
+                            console.log("You win! Rock beats scissors."); }
+                    } else if (humanSelection === "Your choice: paper") {
+                        if (computerSelection === "Computer's choice: rock") {
+                            humanScore++;
+                            console.log("You win! Paper beats rock.");
+                        } else if (computerSelection === "Computer's choice: paper") {
+                            console.log("It's a tie! Both chose paper.");
+                        } else if (computerSelection === "Computer's choice: scissors") {
+                            computerScore++;
+                            console.log("You lose! Scissors beats paper."); }
+                    } else if (humanSelection === "Your choice: scissors") {
+                        if (computerSelection === "Computer's choice: rock") {
+                            computerScore++;
+                            console.log("You lose! Rock beats scissors.");
+                        } else if (computerSelection === "Computer's choice: scissors") {
+                            console.log("It's a tie! Both chose scissors.");
+                        } else if (computerSelection === "Computer's choice: paper") {
+                            humanScore++;
+                            console.log("You lose! Scissors beats paper.");}
+                        }
+                    
+                        
+                }
+
+                playRound(humanSelection, computerSelection);
+
+            } 
+            if (humanScore > computerScore) {
+                    console.log("You won the game!")
+                } else if (humanScore < computerScore) {
+                    console.log("Computer won the game!")
+                } else {
+                    console.log("The game was a tie!")
+                }
+        }
+        playGame();
+    
+        
+
+    </script>
+</body>
+</html>
